@@ -107,7 +107,6 @@
     color: var(--accent);
     font-style: italic;
   }
-  .h1-mobile { display: none; }
 
   .lede {
     margin: 0;
@@ -259,10 +258,6 @@
     .badge        { order: 1; align-self: center; }
     h1            { order: 2; }
     .poster-wrap  { order: 3; }
-
-    /* swap to the mobile-grouped headline, sized so each phrase fits one line */
-    .h1-desktop { display: none; }
-    .h1-mobile  { display: block; font-size: clamp(29px, 8.4vw, 46px); }
     .lede         { order: 4; margin-left: auto; margin-right: auto; }
     form          { order: 5; margin-left: auto; margin-right: auto; }
 
@@ -297,17 +292,10 @@
       Waitlist Open
     </div>
 
-    <!-- Desktop headline: matches the original mockup grouping -->
-    <h1 class="h1-desktop">
+    <h1>
       <span class="hl">Start &amp;</span><br>
       <span class="hl">Scale</span> Your<br>
       Newsletter<br>
-      <span class="sprint">5&#8209;Day Sprint</span>
-    </h1>
-    <!-- Mobile headline: regrouped so each phrase sits on one line -->
-    <h1 class="h1-mobile">
-      <span class="hl">Start &amp; Scale</span><br>
-      Your Newsletter<br>
       <span class="sprint">5&#8209;Day Sprint</span>
     </h1>
 
