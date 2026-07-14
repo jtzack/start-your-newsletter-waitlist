@@ -242,27 +242,42 @@
 
   /* ---- Mobile ---- */
   @media (max-width: 880px) {
-    .stage { flex-direction: column; }
+    .stage {
+      flex-direction: column;
+      height: auto;
+      min-height: 100dvh;
+      overflow: visible;
+    }
     .panel {
-      order: 2;
-      flex: 1 1 auto;
+      order: 1;
+      flex: 0 0 auto;
       max-width: none;
       justify-content: flex-start;
-      padding: 22px 22px 26px;
-      gap: 15px;
+      align-items: center;
+      text-align: center;
+      padding: 30px 22px 20px;
+      gap: 16px;
     }
+    .badge { align-self: center; }
+    .lede { margin-left: auto; margin-right: auto; }
+    form { margin-left: auto; margin-right: auto; }
     .poster-wrap {
-      order: 1;
-      flex: 0 0 34dvh;
-      min-height: 34dvh;
+      order: 2;
+      flex: 0 0 auto;
+      height: 42dvh;
+      min-height: 300px;
+      padding: 0 20px 24px;
     }
     .poster-img {
       max-width: 100%;
       max-height: 100%;
-      object-position: 14% 58%;
+      -webkit-mask-image: none;
+      mask-image: none;
     }
-    .scrim-left {
-      background: linear-gradient(0deg, var(--ink) 0%, rgba(11,11,12,0) 42%);
+    /* fade the top edge of the image into the text above */
+    .scrim-left { background: none; }
+    .scrim-bottom {
+      background: linear-gradient(180deg, var(--ink) 0%, rgba(11,11,12,0) 26%);
     }
   }
 </style>
