@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start &amp; Scale Your Newsletter — 5-Day Sprint</title>
+<meta name="description" content="Join the waitlist for the 5-Day Sprint: a 1-week live experience to start your newsletter, position it as the category king of your niche, and grow (and monetize) it in 5 days.">
+
+<!-- Social sharing -->
+<meta property="og:title" content="Start &amp; Scale Your Newsletter — 5-Day Sprint">
+<meta property="og:description" content="A 1-week live experience to start your newsletter, own your niche, and start growing (and monetizing) it in 5 days. Join the waitlist.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/roadmap.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #E9EF3A;
+    --ink: #0B0B0C;
+    --paper: #F4F2EC;
+    --muted: #c7c5bc;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ink); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #fff; }
+  input::placeholder { color: #6b6a61; }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: .3; transform: scale(.72); }
+  }
+
+  .stage {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    overflow: hidden;
+    background: var(--ink);
+    font-family: Archivo, sans-serif;
+    position: relative;
+  }
+
+  /* ---- Left panel ---- */
+  .panel {
+    flex: 0 0 50%;
+    max-width: 720px;
+    padding: clamp(30px, 4.4vw, 68px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(20px, 2.6vh, 32px);
+    position: relative;
+    z-index: 3;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    align-self: flex-start;
+    padding: 8px 15px;
+    border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .badge .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulseDot 1.8s ease-in-out infinite;
+  }
+
+  h1 {
+    margin: 0;
+    font-weight: 900;
+    line-height: .94;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    color: var(--paper);
+    font-size: clamp(38px, 5.2vw, 80px);
+  }
+  h1 .hl {
+    background: var(--accent);
+    color: var(--ink);
+    padding: 0 .1em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  h1 .sprint {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 44ch;
+    font-size: clamp(15px, 1.15vw, 18px);
+    line-height: 1.55;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .lede strong { color: var(--paper); font-weight: 700; }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    width: 100%;
+    max-width: 480px;
+  }
+  form input {
+    width: 100%;
+    padding: 16px 18px;
+    background: #141416;
+    border: 1px solid #2c2c30;
+    border-radius: 13px;
+    color: var(--paper);
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    outline: none;
+    transition: border-color .15s ease;
+  }
+  form input:focus { border-color: var(--accent); }
+  form button {
+    width: 100%;
+    border: none;
+    border-radius: 13px;
+    padding: 18px 22px;
+    background: var(--accent);
+    color: var(--ink);
+    font-family: Archivo, sans-serif;
+    font-weight: 800;
+    font-size: clamp(14px, 1.35vw, 17px);
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    cursor: pointer;
+    transition: transform .15s ease, filter .15s ease;
+  }
+  form button:hover { filter: brightness(1.08); transform: translateY(-2px); }
+  form button:disabled { cursor: default; opacity: .7; transform: none; filter: none; }
+
+  .success {
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid color-mix(in srgb, var(--accent) 44%, transparent);
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+    border-radius: 13px;
+    padding: 20px 22px;
+  }
+  .success .head {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .success .head span { font-size: 15px; }
+  .success .body {
+    margin-top: 8px;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  [hidden] { display: none !important; }
+
+  /* ---- Right poster ---- */
+  .poster-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(20px, 3.6vh, 60px);
+  }
+  .poster-img {
+    max-width: 94%;
+    max-height: 88%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    -webkit-mask-image: linear-gradient(to right, #000 70%, transparent 97%);
+    mask-image: linear-gradient(to right, #000 70%, transparent 97%);
+  }
+  .scrim-left {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--ink) 0%, rgba(11,11,12,0) 20%);
+  }
+  .scrim-bottom {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(0deg, rgba(11,11,12,.5) 0%, rgba(11,11,12,0) 26%);
+  }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 880px) {
+    .stage { flex-direction: column; }
+    .panel {
+      order: 2;
+      flex: 1 1 auto;
+      max-width: none;
+      justify-content: flex-start;
+      padding: 22px 22px 26px;
+      gap: 15px;
+    }
+    .poster-wrap {
+      order: 1;
+      flex: 0 0 34dvh;
+      min-height: 34dvh;
+    }
+    .poster-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-position: 14% 58%;
+    }
+    .scrim-left {
+      background: linear-gradient(0deg, var(--ink) 0%, rgba(11,11,12,0) 42%);
+    }
+  }
+</style>
+</head>
+<body>
+<main class="stage">
+
+  <section class="panel">
+
+    <span class="visually-hidden">Start &amp; Scale Your Newsletter — the 5-Day Sprint. Join the waitlist.</span>
+
+    <div class="badge">
+      <span class="dot"></span>
+      Waitlist Open
+    </div>
+
+    <h1>
+      <span class="hl">Start &amp;</span><br>
+      <span class="hl">Scale</span> Your<br>
+      Newsletter<br>
+      <span class="sprint">5&#8209;Day Sprint</span>
+    </h1>
+
+    <p class="lede">Next week, we're launching a 1&#8209;week live experience to help you <strong>start your newsletter</strong>, position it as the &ldquo;category king&rdquo; of your niche, and start <strong>growing (and monetizing)</strong> it in 5 days.</p>
+
+    <form id="waitlist-form" novalidate>
+      <input id="email" type="email" required autocomplete="email" placeholder="you@email.com" aria-label="Email address" />
+      <button type="submit">Join The Waitlist &amp; Unlock Exclusive Bonuses</button>
+    </form>
+
+    <div class="success" id="success" hidden>
+      <div class="head"><span>&#10003;</span> You're on the list</div>
+      <div class="body">Watch your inbox — we'll send your exclusive bonuses before the doors open.</div>
+    </div>
+
+  </section>
+
+  <div class="poster-wrap">
+    <img class="poster-img" src="assets/roadmap.png" alt="A winding-road roadmap: category positioning, choosing your platform, writing mastery, traffic secrets, and monetization." />
+    <div class="scrim-left"></div>
+    <div class="scrim-bottom"></div>
+  </div>
+
+</main>
+
+<script>
+  (function () {
+    var form = document.getElementById('waitlist-form');
+    var input = document.getElementById('email');
+    var success = document.getElementById('success');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var email = input.value.trim();
+      if (!email || !input.checkValidity()) {
+        input.focus();
+        input.reportValidity && input.reportValidity();
+        return;
+      }
+
+      // TODO: wire this up to your email provider (e.g. Kit form endpoint).
+      // Example:
+      //   fetch('/api/waitlist', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify({ email: email })
+      //   });
+
+      form.hidden = true;
+      success.hidden = false;
+    });
+  })();
+</script>
+</body>
+</html>
