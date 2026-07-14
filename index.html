@@ -244,29 +244,29 @@
   @media (max-width: 880px) {
     .stage {
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       height: auto;
       min-height: 100dvh;
       overflow: visible;
-    }
-    .panel {
-      order: 1;
-      flex: 0 0 auto;
-      max-width: none;
-      justify-content: flex-start;
-      align-items: center;
-      text-align: center;
-      padding: 30px 22px 20px;
+      padding: 30px 22px 26px;
       gap: 16px;
     }
-    .badge { align-self: center; }
-    .lede { margin-left: auto; margin-right: auto; }
-    form { margin-left: auto; margin-right: auto; }
+    /* flatten the panel so its children and the image can be interleaved:
+       badge -> headline -> image -> lede -> CTA */
+    .panel { display: contents; }
+    .badge        { order: 1; align-self: center; }
+    h1            { order: 2; }
+    .poster-wrap  { order: 3; }
+    .lede         { order: 4; margin-left: auto; margin-right: auto; }
+    form          { order: 5; margin-left: auto; margin-right: auto; }
+
     .poster-wrap {
-      order: 2;
-      flex: 0 0 auto;
-      height: 42dvh;
-      min-height: 300px;
-      padding: 0 20px 24px;
+      align-self: stretch;
+      width: 100%;
+      height: 40dvh;
+      min-height: 290px;
+      padding: 0;
     }
     .poster-img {
       max-width: 100%;
@@ -274,11 +274,8 @@
       -webkit-mask-image: none;
       mask-image: none;
     }
-    /* fade the top edge of the image into the text above */
-    .scrim-left { background: none; }
-    .scrim-bottom {
-      background: linear-gradient(180deg, var(--ink) 0%, rgba(11,11,12,0) 26%);
-    }
+    .scrim-left,
+    .scrim-bottom { background: none; }
   }
 </style>
 </head>
