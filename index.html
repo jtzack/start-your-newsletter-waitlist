@@ -125,6 +125,25 @@
     width: 100%;
     max-width: 480px;
   }
+  form [data-element="fields"] {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    width: 100%;
+  }
+  /* Kit error alert, restyled for the dark theme */
+  .wl-errors {
+    list-style: none;
+    margin: 0;
+    padding: 12px 16px;
+    border: 1px solid #f2643b;
+    background: color-mix(in srgb, #f2643b 12%, transparent);
+    border-radius: 13px;
+    color: #ffb9a3;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .wl-errors:empty { display: none; }
   form input {
     width: 100%;
     padding: 16px 18px;
@@ -155,32 +174,36 @@
   }
   form button:hover { filter: brightness(1.08); transform: translateY(-2px); }
   form button:disabled { cursor: default; opacity: .7; transform: none; filter: none; }
-
-  .success {
-    width: 100%;
-    max-width: 480px;
-    border: 1px solid color-mix(in srgb, var(--accent) 44%, transparent);
-    background: color-mix(in srgb, var(--accent) 7%, transparent);
-    border-radius: 13px;
-    padding: 20px 22px;
-  }
-  .success .head {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--accent);
+  form button { position: relative; }
+  /* Kit submit spinner */
+  .formkit-spinner {
     display: flex;
-    align-items: center;
-    gap: 9px;
+    height: 0; width: 0;
+    margin: 0 auto;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    text-align: center;
+    transition: all 300ms ease-in-out;
   }
-  .success .head span { font-size: 15px; }
-  .success .body {
-    margin-top: 8px;
-    font-size: 14.5px;
-    line-height: 1.5;
-    color: var(--muted);
+  .formkit-spinner > div {
+    margin: auto;
+    width: 11px; height: 11px;
+    background-color: var(--ink);
+    opacity: .35;
+    border-radius: 100%;
+    display: inline-block;
+    animation: formkit-bounce 1.4s infinite ease-in-out both;
   }
+  .formkit-spinner > div:nth-child(1) { animation-delay: -.32s; }
+  .formkit-spinner > div:nth-child(2) { animation-delay: -.16s; }
+  form button[data-active] .formkit-spinner { opacity: 1; height: 100%; width: 46px; }
+  form button[data-active] .formkit-spinner ~ span { opacity: 0; }
+  @keyframes formkit-bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+  }
+
   [hidden] { display: none !important; }
 
   /* ---- Right poster ---- */
@@ -265,15 +288,19 @@
 
     <p class="lede">Next week, we're launching a 1&#8209;week live experience to help you <strong>start your newsletter</strong>, position it as the &ldquo;category king&rdquo; of your niche, and start <strong>growing (and monetizing)</strong> it in 5 days.</p>
 
-    <form id="waitlist-form" novalidate>
-      <input id="email" type="email" required autocomplete="email" placeholder="you@email.com" aria-label="Email address" />
-      <button type="submit">Join The Waitlist &amp; Unlock Exclusive Bonuses</button>
+    <form action="https://app.kit.com/forms/9680893/subscriptions" method="post"
+          class="seva-form formkit-form"
+          data-sv-form="9680893" data-uid="28d74d1918" data-format="inline" data-version="5"
+          data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;https://vine-perch-730.notion.site/Boom-you-re-officially-on-the-Start-Scale-Your-Newsletter-Waitlist-21c01b956bb682339076814a3112b597?pvs=74&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}">
+      <ul class="wl-errors" data-element="errors" data-group="alert"></ul>
+      <div data-element="fields">
+        <input name="email_address" type="email" required autocomplete="email" placeholder="you@email.com" aria-label="Email address" />
+        <button data-element="submit" type="submit">
+          <div class="formkit-spinner"><div></div><div></div><div></div></div>
+          <span>Join The Waitlist &amp; Unlock Exclusive Bonuses</span>
+        </button>
+      </div>
     </form>
-
-    <div class="success" id="success" hidden>
-      <div class="head"><span>&#10003;</span> You're on the list</div>
-      <div class="body">Watch your inbox — we'll send your exclusive bonuses before the doors open.</div>
-    </div>
 
   </section>
 
@@ -285,34 +312,9 @@
 
 </main>
 
-<script>
-  (function () {
-    var form = document.getElementById('waitlist-form');
-    var input = document.getElementById('email');
-    var success = document.getElementById('success');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var email = input.value.trim();
-      if (!email || !input.checkValidity()) {
-        input.focus();
-        input.reportValidity && input.reportValidity();
-        return;
-      }
-
-      // TODO: wire this up to your email provider (e.g. Kit form endpoint).
-      // Example:
-      //   fetch('/api/waitlist', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ email: email })
-      //   });
-
-      form.hidden = true;
-      success.hidden = false;
-    });
-  })();
-</script>
+<!-- Kit (ConvertKit) form runtime: handles AJAX submit, validation, and the
+     configured redirect to the "you're on the waitlist" confirmation page.
+     If it fails to load, the form falls back to a normal POST to Kit. -->
+<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 </body>
 </html>

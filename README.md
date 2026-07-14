@@ -24,12 +24,18 @@ final image (same path/name) and the page picks it up automatically. The image i
 displayed with `object-fit: contain` and a soft left-edge mask, so any aspect ratio
 works.
 
-## Wiring up the form
+## The signup form (Kit / ConvertKit)
 
-The email form currently shows a client-side success state on submit. To capture
-signups, point it at your email provider inside the `<script>` block in
-`index.html` (see the `TODO` / `fetch('/api/waitlist', …)` comment) — e.g. a Kit
-form endpoint or your own API route.
+The email form is wired to **Kit form `9680893`**. It posts to
+`https://app.kit.com/forms/9680893/subscriptions` (field `email_address`) and is
+enhanced by Kit's `ck.5.js` runtime, which handles AJAX submission, validation,
+and the configured redirect to the confirmation page on success. If the script
+fails to load, the form falls back to a normal POST to Kit.
+
+The form keeps the dark theme styling — Kit's default classes and injected CSS
+are intentionally left out so they don't override the design. To point at a
+different Kit form, update the form's `action`, `data-sv-form`, `data-uid`, and
+the `redirect_url` inside `data-options` in `index.html`.
 
 ## Design variants
 
