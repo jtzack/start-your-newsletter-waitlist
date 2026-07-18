@@ -6,7 +6,7 @@ Claude Design component `Waitlist.dc.html` into a self-contained, deployable pag
 ## Files
 
 - `index.html` — the landing page (all CSS/JS inline, no build step)
-- `assets/roadmap.png` — the poster/roadmap artwork shown on the right
+- `assets/syn-sneak-peek.png` — the sneak-peek artwork shown on the right
 
 ## Running locally
 
@@ -19,7 +19,7 @@ python3 -m http.server 8000
 
 ## Swapping the poster image
 
-The right-hand artwork lives at `assets/roadmap.png`. Replace that file with the
+The right-hand artwork lives at `assets/syn-sneak-peek.png`. Replace that file with the
 final image (same path/name) and the page picks it up automatically. The image is
 displayed with `object-fit: contain` and a soft left-edge mask, so any aspect ratio
 works.
